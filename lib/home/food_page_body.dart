@@ -1,5 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:food_delivery/utils/dimensions.dart';
 import 'package:food_delivery/widgets/widget_icon_with_text.dart';
 import 'package:food_delivery/widgets/widget_text_big.dart';
 import 'package:food_delivery/widgets/widget_text_small.dart';
@@ -15,7 +16,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
   PageController pageController = PageController(viewportFraction: 0.85);
   var _currentPageValue = 0.0;
   double _scaleFactor = 0.8;
-  double _height = 220.0;
+  double _height = Dimentions.pageView;
 
   @override
   void initState() {
@@ -37,8 +38,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
     return Column(
       children: [
         Container(
-          margin: const EdgeInsets.only(top: 20),
-          height: 260,
+          margin: EdgeInsets.only(top: Dimentions.customHeight20),
+          height: Dimentions.pageView,
           child: PageView.builder(
               controller: pageController,
               itemCount: 5,
@@ -71,7 +72,6 @@ class _FoodPageBodyState extends State<FoodPageBody> {
     } else if (position == _currentPageValue.floor() + 1) {
       var currentScale = _scaleFactor +
           (_currentPageValue - position + 1) * (1 - _scaleFactor);
-      var currentTransfer = _height * (1 - currentScale) * 2;
       var heightTransfer = _height * (1 - currentScale) * 2 / 4;
       matrix = Matrix4.diagonal3Values(1, currentScale, 1);
       matrix = Matrix4.diagonal3Values(1, currentScale, 1)
@@ -79,7 +79,6 @@ class _FoodPageBodyState extends State<FoodPageBody> {
     } else if (position == _currentPageValue.floor() - 1) {
       var currentScale =
           1 - (_currentPageValue - position) * (1 - _scaleFactor);
-      var currentTransfer = _height * (1 - currentScale) * 2;
       var heightTransfer = _height * (1 - currentScale) * 2 / 4;
       matrix = Matrix4.diagonal3Values(1, currentScale, 1);
       matrix = Matrix4.diagonal3Values(1, currentScale, 1)
@@ -94,10 +93,10 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       child: Stack(
         children: [
           Container(
-            height: 220,
-            margin: const EdgeInsets.only(
-              left: 10,
-              right: 10,
+            height: Dimentions.pageViewContainer,
+            margin: EdgeInsets.only(
+              left: Dimentions.customHeight10,
+              right: Dimentions.customHeight10,
             ),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
@@ -109,8 +108,11 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height: 110,
-              margin: const EdgeInsets.only(left: 40, right: 40, bottom: 15),
+              height: Dimentions.pageViewTextContainer,
+              margin: EdgeInsets.only(
+                  left: Dimentions.customHeight40,
+                  right: Dimentions.customHeight40,
+                  bottom: Dimentions.customHeight10),
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
@@ -123,12 +125,15 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     BoxShadow(color: Colors.white, offset: Offset(5, 0))
                   ]),
               child: Container(
-                padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
+                padding: EdgeInsets.only(
+                    top: Dimentions.customHeight10,
+                    left: Dimentions.customHeight10,
+                    right: Dimentions.customHeight10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     WidgetTextBig(text: 'Chinese Side', color: Colors.black),
-                    const SizedBox(height: 4),
+                    SizedBox(height: Dimentions.customHeight4),
                     Row(
                       children: [
                         Wrap(
@@ -137,15 +142,15 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                               (index) => const Icon(Icons.star,
                                   color: Colors.green, size: 15)),
                         ),
-                        const SizedBox(width: 5),
+                        SizedBox(width: Dimentions.customHeight5),
                         WidgetTextSmall(text: '4.5'),
-                        const SizedBox(width: 5),
+                        SizedBox(width: Dimentions.customHeight5),
                         WidgetTextSmall(text: '1287'),
-                        const SizedBox(width: 5),
+                        SizedBox(width: Dimentions.customHeight5),
                         WidgetTextSmall(text: 'comments'),
                       ],
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: Dimentions.customHeight10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: const [
