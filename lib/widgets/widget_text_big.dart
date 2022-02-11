@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/utils/dimensions.dart';
 
 class WidgetTextBig extends StatelessWidget {
   Color? color;
@@ -25,7 +26,7 @@ class WidgetTextBig extends StatelessWidget {
           fontFamily: 'Cormorant',
           color: color,
           fontWeight: FontWeight.w400,
-          fontSize: size),
+          fontSize: size == 0 ? Dimentions.customFontSize20 : size),
     );
   }
 }

@@ -99,7 +99,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               right: Dimentions.customHeight10,
             ),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(Dimentions.customRadius20),
                 color: position.isEven ? Colors.blue : Colors.grey,
                 image: const DecorationImage(
                     fit: BoxFit.cover,
@@ -115,7 +115,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                   bottom: Dimentions.customHeight10),
               decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(Dimentions.customRadius20),
                   boxShadow: const [
                     BoxShadow(
                         color: Colors.black,

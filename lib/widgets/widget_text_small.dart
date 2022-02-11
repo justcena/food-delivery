@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/utils/dimensions.dart';
 
 class WidgetTextSmall extends StatelessWidget {
   Color? color;
@@ -10,7 +11,7 @@ class WidgetTextSmall extends StatelessWidget {
       {Key? key,
       required this.text,
       this.color = Colors.grey,
-      this.size = 12,
+      this.size = 0,
       this.height = 1.2})
       : super(key: key);
 
@@ -22,7 +23,7 @@ class WidgetTextSmall extends StatelessWidget {
           fontFamily: 'Cormorant',
           color: color,
           height: height,
-          fontSize: size),
+          fontSize: size==0?Dimentions.customFontSize12:size),
     );
   }
 }

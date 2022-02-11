@@ -15,4 +15,12 @@ class Dimentions {
   static double customHeight20 = screenHeight / 33.0;
   static double customHeight40 = screenHeight / 17.0;
 
+
+  static double customFontSize20 = screenHeight / 35.0;
+  static double customFontSize12 = screenHeight / 68.0;
+
+  static double customRadius20 = screenHeight / 35.0;
+  static double customRadius30 = screenHeight / 28.0;
+
+
 }
