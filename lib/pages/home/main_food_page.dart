@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/home/food_page_body.dart';
+import 'package:food_delivery/utils/dimensions.dart';
 import 'package:food_delivery/widgets/widget_text_big.dart';
 import 'package:food_delivery/widgets/widget_text_small.dart';
+
+import 'food_page_body.dart';
 
 class MainFoodPage extends StatefulWidget {
   const MainFoodPage({Key? key}) : super(key: key);
@@ -42,8 +44,9 @@ class _MainFoodPageState extends State<MainFoodPage> {
                     child: Container(
                       width: 45,
                       height: 45,
-                      child: const Icon(
+                      child: Icon(
                         Icons.search,
+                        size: Dimentions.customIconSize24,
                         color: Colors.white,
                       ),
                       decoration: BoxDecoration(
@@ -56,7 +59,10 @@ class _MainFoodPageState extends State<MainFoodPage> {
             ),
           ),
           // showing body
-          FoodPageBody()
+          const Expanded(
+              child: SingleChildScrollView(
+            child: FoodPageBody(),
+          ))
         ],
       ),
     );

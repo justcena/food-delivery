@@ -37,6 +37,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        //slider section
         Container(
           margin: EdgeInsets.only(top: Dimentions.customHeight20),
           height: Dimentions.pageView,
@@ -47,6 +48,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 return _buildPageItem(position);
               }),
         ),
+        //dots
         DotsIndicator(
           dotsCount: 5,
           position: _currentPageValue,
@@ -56,6 +58,129 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               activeSize: const Size(18.0, 9.0),
               activeShape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5.0))),
+        ),
+        //popular text
+        SizedBox(height: Dimentions.customHeight20),
+        Container(
+          margin: EdgeInsets.only(left: Dimentions.customWidth20),
+          child: Row(
+            children: [
+              WidgetTextBig(text: 'Popular'),
+              SizedBox(width: Dimentions.customWidth10),
+              Container(
+                child: WidgetTextBig(
+                  text: '.',
+                ),
+              ),
+              SizedBox(width: Dimentions.customWidth10),
+            ],
+          ),
+        ),
+        //list of food and images
+        Container(
+          height: 900,
+          child: ListView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              // physics: const AlwaysScrollableScrollPhysics(),
+              // shrinkWrap: true,
+              itemCount: 10,
+              itemBuilder: (context, position) {
+                return Container(
+                  margin: EdgeInsets.only(
+                      bottom: Dimentions.customWidth10,
+                      left: Dimentions.customWidth10,
+                      right: Dimentions.customWidth10),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 120,
+                        height: 120,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                                Dimentions.customRadius20),
+                            color: Colors.black,
+                            image: const DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage('assets/image/food0.png'))),
+                      ),
+                      Expanded(
+                          child: Container(
+                        height: 100,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                                topRight:
+                                    Radius.circular(Dimentions.customWidth10),
+                                topLeft:
+                                    Radius.circular(Dimentions.customWidth10))),
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              right: Dimentions.customWidth10,
+                              left: Dimentions.customWidth10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              WidgetTextBig(
+                                  text:
+                                      'Nutritious fruit meal in china all overs'),
+                              SizedBox(height: Dimentions.customWidth10),
+                              WidgetTextSmall(text: 'text'),
+                              SizedBox(height: Dimentions.customWidth10),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: const [
+                                  WidgetIconWithText(
+                                      text: 'Normal',
+                                      textColor: Colors.grey,
+                                      icon: Icons.circle_sharp,
+                                      iconColor: Colors.orange),
+                                  WidgetIconWithText(
+                                      text: 'Normal',
+                                      textColor: Colors.grey,
+                                      icon: Icons.location_on,
+                                      iconColor: Colors.lightGreenAccent),
+                                  WidgetIconWithText(
+                                      text: 'Normal',
+                                      textColor: Colors.grey,
+                                      icon: Icons.access_time_rounded,
+                                      iconColor: Colors.red),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      ))
+                      // Column(
+                      //   children: [
+                      //     WidgetTextBig(text: 'gg'),
+                      //     WidgetTextSmall(text: 'text'),
+                      //     Row(
+                      //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //       children: const [
+                      //         WidgetIconWithText(
+                      //             text: 'Normal',
+                      //             textColor: Colors.grey,
+                      //             icon: Icons.circle_sharp,
+                      //             iconColor: Colors.orange),
+                      //         WidgetIconWithText(
+                      //             text: 'Normal',
+                      //             textColor: Colors.grey,
+                      //             icon: Icons.location_on,
+                      //             iconColor: Colors.lightGreenAccent),
+                      //         WidgetIconWithText(
+                      //             text: 'Normal',
+                      //             textColor: Colors.grey,
+                      //             icon: Icons.access_time_rounded,
+                      //             iconColor: Colors.red),
+                      //       ],
+                      //     )
+                      //   ],
+                      // )
+                    ],
+                  ),
+                );
+              }),
         )
       ],
     );
@@ -115,7 +240,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                   bottom: Dimentions.customHeight10),
               decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(Dimentions.customRadius20),
+                  borderRadius:
+                      BorderRadius.circular(Dimentions.customRadius20),
                   boxShadow: const [
                     BoxShadow(
                         color: Colors.black,
