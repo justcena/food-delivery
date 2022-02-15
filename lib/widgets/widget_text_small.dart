@@ -11,7 +11,7 @@ class WidgetTextSmall extends StatelessWidget {
       {Key? key,
       required this.text,
       this.color = Colors.grey,
-      this.size = 0,
+      this.size = 12.0,
       this.height = 1.2})
       : super(key: key);
 
@@ -23,7 +23,7 @@ class WidgetTextSmall extends StatelessWidget {
           fontFamily: 'Cormorant',
           color: color,
           height: height,
-          fontSize: size==0?Dimentions.customFontSize12:size),
+          fontSize: size),
     );
   }
 }
