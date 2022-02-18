@@ -30,6 +30,9 @@ class Dimentions {
   static double customRadius20 = screenHeight / 35.0;
   static double customRadius30 = screenHeight / 28.0;
 
-  static double customIconSize24 = screenHeight / 28.0;
+  static double customIconSize16 = screenHeight / 54.0;
+  static double customIconSize20 = screenHeight / 38.0;
+  static double customIconSize24 = screenHeight / 18.0;
+
   static double popularFoodImgSize = screenHeight / 2.1;
 }
