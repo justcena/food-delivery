@@ -11,6 +11,8 @@ class PopularProductController extends GetxController {
 
   List<dynamic> get popularProductList => _popularProductList;
 
+  bool _isLoaded = false;
+
   Future<void> getPopularProductList() async {
     Response response = await popularProductRepository.getPopularListResponse();
     if (response.statusCode == 200) {
@@ -22,7 +24,6 @@ class PopularProductController extends GetxController {
     } else {
       print(response.statusCode);
       print('Error');
-
     }
   }
 }
