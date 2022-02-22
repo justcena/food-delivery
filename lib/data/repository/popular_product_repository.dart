@@ -8,6 +8,6 @@ class PopularProductRepository extends GetxService {
 
   Future<Response> getPopularListResponse() async {
     // todo create url for this methode
-    return await apiClient.getData('https://www.dbestech.com/api/product/list');
+    return await apiClient.getData("/api/v1/products/popular");
   }
 }
