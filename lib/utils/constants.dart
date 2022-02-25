@@ -41,6 +41,7 @@ class Constants {
   static const APP_VERSION = 1;
 
   static const BASE_URL = "https://mvs.bslmeiyu.com";
+  static const UPLOAD_URL = '/uploads/';
   static const PUPULAR_PRODUCT_URI = "/api/v1/products/popular";
   static const RECOMMENDED_PRODUCT_URI = "/api/v1/products/recommended";
 
