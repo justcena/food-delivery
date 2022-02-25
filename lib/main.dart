@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/data/controllers/recommended_product_controller.dart';
 import 'package:food_delivery/pages/food/recommended_food_detail.dart';
 import 'package:food_delivery/pages/home/main_food_page.dart';
+import 'package:food_delivery/routes/route_helper.dart';
 import 'package:get/get.dart';
 import 'data/controllers/popular_product_controller.dart';
 import 'helper/dependencies.dart' as dependencies;
@@ -11,7 +12,7 @@ Future<void> main() async {
   await dependencies.init();
   runApp(const MyApp());
 }
-
+  //todo 8:20:00
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -24,10 +25,9 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: const MainFoodPage(),
+      initialRoute: RouteHelper.getInitial(),
+      getPages: RouteHelper.routes,
     );
   }
 }

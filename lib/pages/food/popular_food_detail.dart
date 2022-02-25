@@ -1,19 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/data/controllers/popular_product_controller.dart';
+import 'package:food_delivery/pages/home/main_food_page.dart';
 import 'package:food_delivery/utils/constants.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 import 'package:food_delivery/widgets/app_column.dart';
 import 'package:food_delivery/widgets/widget_text_expandable.dart';
+import 'package:get/get.dart';
 
 import '../../widgets/widget_icon_app.dart';
-import '../../widgets/widget_icon_with_text.dart';
 import '../../widgets/widget_text_big.dart';
 import '../../widgets/widget_text_small.dart';
 
 class PopularFoodDetail extends StatelessWidget {
-  const PopularFoodDetail({Key? key}) : super(key: key);
+  int pageId;
+
+  PopularFoodDetail({Key? key, required this.pageId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var product=Get.find<PopularProductController>().popularProductList[pageId];
+    print(pageId.toString());
+    print(product.name.toString());
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
@@ -38,7 +45,11 @@ class PopularFoodDetail extends StatelessWidget {
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    AppIcon(icon: Icons.arrow_back_ios_new),
+                    GestureDetector(
+                        onTap: () {
+                          Get.to(() => MainFoodPage());
+                        },
+                        child: AppIcon(icon: Icons.arrow_back_ios_new)),
                     AppIcon(icon: Icons.shopping_cart_outlined)
                   ])),
           //intro of food
