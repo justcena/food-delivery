@@ -32,10 +32,10 @@ class PopularFoodDetail extends StatelessWidget {
               child: Container(
                 width: double.maxFinite,
                 height: 350,
-                decoration: const BoxDecoration(
+                decoration:  BoxDecoration(
                     image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage('assets/image/food15.jpeg'))),
+                        image: NetworkImage(Constants.BASE_URL+Constants.UPLOAD_URL+product.img))),
               )),
           //icons widgets
           Positioned(
@@ -69,14 +69,14 @@ class PopularFoodDetail extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const AppColumn(text: 'Chinese Side'),
+                      AppColumn(text: product.name),
                       SizedBox(height: Dimentions.customHeight20),
                       WidgetTextBig(text: 'Introduce'),
                       SizedBox(height: Dimentions.customHeight20),
                       Expanded(
                         child: SingleChildScrollView(
                           child: WidgetTextExpandable(
-                              text: Constants.textDescription),
+                              text: product.description),
                         ),
                       )
                     ],
@@ -124,7 +124,7 @@ class PopularFoodDetail extends StatelessWidget {
                 children: [
                   SizedBox(width: Dimentions.customWidth10),
                   WidgetTextBig(
-                      text: '\$10 | Add to cart', color: Colors.white),
+                      text: '\$ ${product.price!} | Add to cart', color: Colors.white),
                   SizedBox(width: Dimentions.customWidth10)
                 ],
               ),
