@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/data/controllers/recommended_product_controller.dart';
 import 'package:food_delivery/routes/route_helper.dart';
 import 'package:food_delivery/utils/constants.dart';
 import 'package:food_delivery/utils/dimensions.dart';
@@ -8,10 +9,16 @@ import 'package:food_delivery/widgets/widget_text_expandable.dart';
 import 'package:get/get.dart';
 
 class RecommendedFoodDetail extends StatelessWidget {
-  const RecommendedFoodDetail({Key? key}) : super(key: key);
+  final int pageId;
+
+  const RecommendedFoodDetail({Key? key, required this.pageId})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var product =
+        Get.find<RecommendedProductController>().recommendedProductList[pageId];
+
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -22,13 +29,15 @@ class RecommendedFoodDetail extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 GestureDetector(
-                    onTap:(){Get.toNamed(RouteHelper.getInitial());},
+                    onTap: () {
+                      Get.toNamed(RouteHelper.getInitial());
+                    },
                     child: AppIcon(icon: Icons.clear)),
                 AppIcon(icon: Icons.shopping_cart_outlined)
               ],
             ),
             bottom: PreferredSize(
-              preferredSize: const Size.fromHeight(20),
+              preferredSize: const Size.fromHeight(10),
               child: Container(
                 decoration: BoxDecoration(
                     color: Colors.white,
@@ -38,7 +47,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                 child: Center(
                     child: WidgetTextBig(
                   color: Colors.black,
-                  text: 'Sliver App Bar',
+                  text: product.name!,
                   size: Dimentions.customFontSize26,
                 )),
                 width: double.maxFinite,
@@ -49,15 +58,17 @@ class RecommendedFoodDetail extends StatelessWidget {
             pinned: true,
             expandedHeight: 300,
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset('assets/image/food0.png',
-                  width: double.maxFinite, fit: BoxFit.cover),
+              background: Image.network(
+                  Constants.BASE_URL + Constants.UPLOAD_URL + product.img!,
+                  width: double.maxFinite,
+                  fit: BoxFit.cover),
             ),
           ),
           SliverToBoxAdapter(
             child: Column(
               children: [
                 Container(
-                  child: WidgetTextExpandable(text: Constants.textDescription),
+                  child: WidgetTextExpandable(text: product.description!),
                   margin: EdgeInsets.only(
                       left: Dimentions.customWidth20,
                       right: Dimentions.customWidth20),
@@ -85,7 +96,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                     background: Colors.green,
                     icon: Icons.remove),
                 WidgetTextBig(
-                    color: Colors.black, text: '\$12.88' + '   X ' + '0'),
+                    color: Colors.black, text: '\$  ${product.price!} X 0'),
                 AppIcon(
                     iconColor: Colors.white,
                     size: Dimentions.customIconSize24,
@@ -110,13 +121,16 @@ class RecommendedFoodDetail extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  padding: EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                      borderRadius:
-                          BorderRadius.circular(Dimentions.customRadius20),
-                      color: Colors.white),
-                  child: Icon(Icons.favorite,color: Colors.green,size: 24,)
-                ),
+                    padding: EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            BorderRadius.circular(Dimentions.customRadius20),
+                        color: Colors.white),
+                    child: Icon(
+                      Icons.favorite,
+                      color: Colors.green,
+                      size: 24,
+                    )),
                 Container(
                   padding: EdgeInsets.all(20),
                   decoration: BoxDecoration(

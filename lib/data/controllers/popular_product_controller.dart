@@ -8,25 +8,36 @@ class PopularProductController extends GetxController {
   PopularProductController({required this.popularProductRepository});
 
   List<dynamic> _popularProductList = [];
-
   List<dynamic> get popularProductList => _popularProductList;
 
   bool _isLoaded = false;
   bool get isLoaded => _isLoaded;
 
+  int _quantity = 0;
+  int get quantity=> _quantity;
+
   Future<void> getPopularProductList() async {
     Response response = await popularProductRepository.getPopularListResponse();
     if (response.statusCode == 200) {
-
       print('------------>Success');
       _popularProductList = [];
       _popularProductList.addAll(Product.fromJson(response.body).products);
       print(_popularProductList);
-      _isLoaded=true;
+      _isLoaded = true;
       update();
     } else {
       print(response.statusCode);
       print('Error');
+    }
+  }
+
+  void setQuantity(bool inIncrement) {
+    if (inIncrement) {
+      print('increment');
+      _quantity += 1;
+    } else {
+      print('decrement');
+      _quantity -= 1;
     }
   }
 }
