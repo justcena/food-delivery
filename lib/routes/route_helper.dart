@@ -26,6 +26,7 @@ class RouteHelper {
           return PopularFoodDetail(pageId: int.parse(pageId!));
         },
         transition: Transition.fadeIn),
+
     GetPage(
         name: recommendedFood,
         page: () {

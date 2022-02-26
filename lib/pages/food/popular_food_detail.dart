@@ -12,9 +12,9 @@ import '../../widgets/widget_text_big.dart';
 import '../../widgets/widget_text_small.dart';
 
 class PopularFoodDetail extends StatelessWidget {
-  int pageId;
+  final int pageId;
 
-  PopularFoodDetail({Key? key, required this.pageId}) : super(key: key);
+ const PopularFoodDetail({Key? key, required this.pageId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -112,13 +112,17 @@ class PopularFoodDetail extends StatelessWidget {
                         color: Colors.white),
                     child: Row(
                       children: [
-                        const Icon(Icons.remove, color: Colors.grey),
+                         GestureDetector(
+                             onTap:(){
+                               popularProduct.setQuantity(false);
+                             },
+                             child: Icon(Icons.remove, color: Colors.grey)),
                         SizedBox(width: Dimentions.customWidth10),
-                        WidgetTextBig(text: product.quantity.toString()),
+                        WidgetTextBig(text: popularProduct.quantity.toString()),
                         SizedBox(width: Dimentions.customWidth10),
                         GestureDetector(
                             onTap: () {
-                              product.setQuantity(true);
+                              popularProduct.setQuantity(true);
                             },
                             child: const Icon(Icons.add, color: Colors.grey))
                       ],
